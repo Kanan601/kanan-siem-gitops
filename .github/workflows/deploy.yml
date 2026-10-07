@@ -1,0 +1,33 @@
+name: Deploy SIEM Rules
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'splunk_rules/**'
+      - 'scripts/deploy_splunk.py'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy-splunk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pysigma pysigma-backend-splunk
+
+      - name: Deploy rules to Splunk
+        env:
+          SPLUNK_TOKEN: ${{ secrets.SPLUNK_TOKEN }}
+        run: python scripts/deploy_splunk.py
