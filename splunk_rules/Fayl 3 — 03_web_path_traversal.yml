@@ -1,0 +1,15 @@
+title: Web Path Traversal / LFI Attempt
+id: 9a1c0003-0000-0000-0000-000000000003
+status: experimental
+description: Directory traversal / local file inclusion (OWASP A01)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1083
+logsource:
+  category: webserver
+detection:
+  selection:
+    cs-uri|re: '(?i)(\.\./|%2e%2e%2f|/etc/passwd|/etc/shadow|boot\.ini|win\.ini|php://|file://)'
+  condition: selection
+level: high
