@@ -1,0 +1,15 @@
+title: Sensitive Path / Honeypot Path Probing
+id: 9a1c0011-0000-0000-0000-000000000011
+status: experimental
+description: Access attempts to sensitive paths (.env, .git, wp-login, /admin)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1595.003
+logsource:
+  category: webserver
+detection:
+  selection:
+    cs-uri|re: '(?i)(/wp-login\.php|/wp-admin|/administrator|/phpmyadmin|/\.env|/\.git|/\.aws|/config\.php|/admin/?$)'
+  condition: selection
+level: medium
