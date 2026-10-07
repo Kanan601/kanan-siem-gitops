@@ -1,0 +1,15 @@
+title: HTTP Request Flood (DoS)
+id: 9a1c0010-0000-0000-0000-000000000010
+status: experimental
+description: 300+ requests per minute from one IP (DoS/DDoS)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1498
+logsource:
+  category: webserver
+detection:
+  selection:
+    cs-method|exists: true
+  condition: selection
+level: high
