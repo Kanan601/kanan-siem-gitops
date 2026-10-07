@@ -1,0 +1,16 @@
+title: Account Lockout Detected
+id: 7b2d0005-0000-0000-0000-000000000005
+status: experimental
+description: An account was locked out (often result of brute force)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1110
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4740
+  condition: selection
+level: medium
