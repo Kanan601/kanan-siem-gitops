@@ -1,0 +1,20 @@
+title: Process Injection / LSASS Access (Cobalt Strike / Mimikatz)
+id: 9a1c0015-0000-0000-0000-000000000015
+status: experimental
+description: CreateRemoteThread (Sysmon 8) or LSASS access (Sysmon 10)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1055
+  - attack.t1003.001
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_inject:
+    EventID: 8
+  selection_lsass:
+    EventID: 10
+    TargetImage|endswith: '\lsass.exe'
+  condition: selection_inject or selection_lsass
+level: critical
