@@ -1,0 +1,15 @@
+title: HTTP 403 Forbidden Spike
+id: 9a1c0007-0000-0000-0000-000000000007
+status: experimental
+description: 15+ Forbidden responses from one IP in 5 min (OWASP A01)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1190
+logsource:
+  category: webserver
+detection:
+  selection:
+    sc-status: 403
+  condition: selection
+level: medium
