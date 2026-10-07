@@ -1,0 +1,16 @@
+title: Repeated Failed Logons (Brute Force)
+id: 7b2d0003-0000-0000-0000-000000000003
+status: experimental
+description: Failed logon events (4625); threshold configured in QRadar Rule Wizard
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1110
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4625
+  condition: selection
+level: medium
