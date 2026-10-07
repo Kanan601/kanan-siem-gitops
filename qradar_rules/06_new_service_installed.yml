@@ -1,0 +1,16 @@
+title: New Windows Service Installed
+id: 7b2d0006-0000-0000-0000-000000000006
+status: experimental
+description: A new service was installed on a server (persistence)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1543.003
+logsource:
+  product: windows
+  service: system
+detection:
+  selection:
+    EventID: 7045
+  condition: selection
+level: medium
