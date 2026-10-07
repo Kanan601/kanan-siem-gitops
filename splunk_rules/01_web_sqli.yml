@@ -1,7 +1,7 @@
 title: Web SQL Injection Attempt
 id: 9a1c0001-0000-0000-0000-000000000001
 status: experimental
-description: Web/API SQL injection payloads (OWASP A03)
+description: Web/API SQL injection payloads (OWASP A03) UPDATED
 author: Kanan
 date: 2026/06/30
 tags:
