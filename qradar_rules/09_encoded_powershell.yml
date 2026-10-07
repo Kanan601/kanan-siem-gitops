@@ -1,0 +1,23 @@
+title: Suspicious Encoded PowerShell Execution
+id: 7b2d0009-0000-0000-0000-000000000009
+status: experimental
+description: PowerShell launched with encoded/hidden command flags
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1059.001
+  - attack.t1027
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 1
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - '-enc'
+      - 'EncodedCommand'
+      - '-w hidden'
+      - '-nop'
+  condition: selection
+level: high
