@@ -1,0 +1,19 @@
+title: Mail Server Authentication Brute Force
+id: 9a1c0012-0000-0000-0000-000000000012
+status: experimental
+description: 10+ failed mail auths from one IP in 5 min
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1110.001
+logsource:
+  product: dovecot
+  service: auth
+detection:
+  selection:
+    message|contains:
+      - 'authentication failed'
+      - 'auth failed'
+      - 'SASL LOGIN authentication failed'
+  condition: selection
+level: medium
