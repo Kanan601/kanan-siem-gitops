@@ -1,0 +1,16 @@
+title: Remote Thread Injection (CreateRemoteThread)
+id: 7b2d0008-0000-0000-0000-000000000008
+status: experimental
+description: Sysmon Event ID 8 - process injection (Cobalt Strike beacon)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1055
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 8
+  condition: selection
+level: high
