@@ -1,0 +1,20 @@
+title: Honeytoken / Decoy Account Triggered
+id: 9a1c0014-0000-0000-0000-000000000014
+status: experimental
+description: Login or file access touching decoy sqladmin or userpasswords.txt
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1078
+logsource:
+  product: windows
+  service: security
+detection:
+  selection_account:
+    EventID:
+      - 4624
+      - 4625
+      - 4768
+    TargetUserName: 'sqladmin'
+  condition: selection_account
+level: critical
