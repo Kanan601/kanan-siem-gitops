@@ -1,0 +1,15 @@
+title: Web SQL Injection Attempt
+id: 9a1c0001-0000-0000-0000-000000000001
+status: experimental
+description: Web/API SQL injection payloads (OWASP A03)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1190
+logsource:
+  category: webserver
+detection:
+  selection:
+    cs-uri-query|re: '(?i)(union(\s|\+)+select|select.+from|or(\s|\+)+1=1|sleep\(|information_schema|--|;)'
+  condition: selection
+level: high
