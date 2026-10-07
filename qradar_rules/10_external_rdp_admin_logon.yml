@@ -1,0 +1,22 @@
+title: External RDP Admin Logon
+id: 7b2d0010-0000-0000-0000-000000000010
+status: experimental
+description: Interactive RDP logon (Type 10) from outside the LAN
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1021.001
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4624
+    LogonType: 10
+  filter_internal:
+    IpAddress|startswith:
+      - '10.'
+      - '192.168.'
+      - '172.16.'
+  condition: selection and not filter_internal
+level: high
