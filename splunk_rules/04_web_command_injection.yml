@@ -1,0 +1,15 @@
+title: Web OS Command Injection Attempt
+id: 9a1c0004-0000-0000-0000-000000000004
+status: experimental
+description: OS command injection patterns (OWASP A03)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1059
+logsource:
+  category: webserver
+detection:
+  selection:
+    cs-uri-query|re: '(?i)(;|\||&&)\s*(cat|ls|id|whoami|wget|curl|nc|bash|sh)\b'
+  condition: selection
+level: high
