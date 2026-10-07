@@ -1,0 +1,16 @@
+title: New User Account Created
+id: 7b2d0001-0000-0000-0000-000000000001
+status: experimental
+description: A new user account was created on a Windows Server
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1136.001
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4720
+  condition: selection
+level: medium
