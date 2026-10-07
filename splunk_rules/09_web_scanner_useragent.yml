@@ -1,0 +1,15 @@
+title: Malicious Scanner User-Agent
+id: 9a1c0009-0000-0000-0000-000000000009
+status: experimental
+description: Requests from known offensive scanning tools
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1595
+logsource:
+  category: webserver
+detection:
+  selection:
+    cs-user-agent|re: '(?i)(sqlmap|nikto|nmap|masscan|wpscan|dirbuster|gobuster|hydra|metasploit)'
+  condition: selection
+level: medium
