@@ -1,0 +1,16 @@
+title: Unauthorized Access to Admin Endpoint (IDOR)
+id: 9a1c0008-0000-0000-0000-000000000008
+status: experimental
+description: Non-admin user reaching /api/v1/users (admin-only)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1213
+logsource:
+  category: webserver
+detection:
+  selection:
+    cs-uri-stem: '/api/v1/users'
+    sc-status: 200
+  condition: selection
+level: high
