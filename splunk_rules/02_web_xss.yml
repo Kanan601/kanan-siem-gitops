@@ -1,0 +1,15 @@
+title: Web Cross-Site Scripting (XSS) Attempt
+id: 9a1c0002-0000-0000-0000-000000000002
+status: experimental
+description: Reflected/Stored XSS payloads (OWASP A03)
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1059
+logsource:
+  category: webserver
+detection:
+  selection:
+    cs-uri-query|re: '(?i)(<script|%3cscript|onerror\s*=|onload\s*=|javascript:|document\.cookie)'
+  condition: selection
+level: high
