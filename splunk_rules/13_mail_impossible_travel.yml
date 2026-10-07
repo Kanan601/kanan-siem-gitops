@@ -1,0 +1,16 @@
+title: Impossible Travel Login
+id: 9a1c0013-0000-0000-0000-000000000013
+status: experimental
+description: Same user logging in from 2+ countries within 60 min
+author: Kanan
+date: 2026/06/30
+tags:
+  - attack.t1078
+logsource:
+  product: dovecot
+  service: auth
+detection:
+  selection:
+    message|contains: 'Login OK'
+  condition: selection
+level: high
