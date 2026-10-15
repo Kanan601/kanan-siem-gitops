@@ -8,11 +8,12 @@ from sigma.backends.splunk import SplunkBackend
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-SPLUNK_HOST = "https://134.122.116.125:8089"
-SPLUNK_TOKEN = os.environ["SPLUNK_TOKEN"]
+SPLUNK_HOST = "https://137.184.102.241:8089"
+SPLUNK_USER = os.environ["SPLUNK_USER"]
+SPLUNK_PASS = os.environ["SPLUNK_PASS"]
 RULES_DIR = "splunk_rules"
 
-headers = {"Authorization": f"Bearer {SPLUNK_TOKEN}"}
+auth = (SPLUNK_USER, SPLUNK_PASS)
 backend = SplunkBackend()
 
 base_url = f"{SPLUNK_HOST}/servicesNS/nobody/search/saved/searches"
@@ -28,16 +29,14 @@ for path in sorted(glob.glob(f"{RULES_DIR}/*.yml")):
         spl = spl_list[0]
         search = f"search {spl}"
 
-        # Try to update first (if it exists)
-        upd = requests.post(f"{base_url}/{name}", headers=headers,
+        upd = requests.post(f"{base_url}/{name}", auth=auth,
                             data={"search": search}, verify=False)
 
         if upd.status_code in (200, 201):
             print(f"[UPDATED] {name}")
             success += 1
         else:
-            # Create new
-            r = requests.post(base_url, headers=headers,
+            r = requests.post(base_url, auth=auth,
                               data={"name": name, "search": search}, verify=False)
             if r.status_code in (200, 201):
                 print(f"[CREATED] {name}")
