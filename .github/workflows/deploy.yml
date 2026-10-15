@@ -29,5 +29,6 @@ jobs:
 
       - name: Deploy rules to Splunk
         env:
-          SPLUNK_TOKEN: ${{ secrets.SPLUNK_TOKEN }}
+          SPLUNK_USER: ${{ secrets.SPLUNK_USER }}
+          SPLUNK_PASS: ${{ secrets.SPLUNK_PASS }}
         run: python scripts/deploy_splunk.py
